@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sofi Cloth Store | Elegant Fashion</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap');
+
+    :root {
+      --green: #123d2c;
+      --dark-green: #092d20;
+      --gold: #b69a60;
+      --cream: #faf6ef;
+      --border: #e2d5c3;
+      --text: #172d23;
+      --white: #fffdf9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* Top Bar */
+    .topbar {
+      background: var(--green);
+      color: white;
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Header */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #eee5d9;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 53px;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .logo-text strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .logo-text small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    nav a {
+      padding: 8px 0;
+      transition: .2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      font-size: 23px;
+    }
+
+    .header-actions a {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      width: 17px;
+      height: 17px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      font-size: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      color: var(--green);
+    }
+
+    /* Hero */
+    .hero {
+      background: #f0e5d7;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .hero-content {
+      padding: 40px 0 40px 8%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .script {
+      color: var(--gold);
+      font-family: 'Parisienne', cursive;
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 4vw, 59px);
+      line-height: 1.08;
+      letter-spacing: 1px;
+      font-weight: 600;
+      max-width: 460px;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--gold);
+      margin: 20px 0;
+      font-size: 19px;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      height: 1px;
+      width: 50px;
+      background: var(--gold);
+    }
+
+    .hero p {
+      max-width: 370px;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 23px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 25px;
+      border-radius: 4px;
+      border: 1px solid var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--green);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-green);
+    }
+
+    .btn-outline {
+      background: transparent;
+      margin-left: 10px;
+    }
+
+    .btn-outline:hover {
+      background: white;
+    }
+
+    .hero-image {
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Sections */
+    .section {
+      padding: 25px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "✦";
+      color: var(--gold);
+      font-size: 13px;
+      border-top: 1px solid var(--gold);
+      width: 65px;
+      padding-top: 2px;
+    }
+
+    /* Categories */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 13px;
+    }
+
+    .category-card {
+      height: 190px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 11px;
+      background: #ead8c5;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--green);
+      color: white;
+      padding: 12px 14px;
+    }
+
+    .category-label strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .category-label span {
+      color: #e7d4a6;
+      font-size: 11px;
+    }
+
+    /* Products */
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin: 25px 0 17px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .heading-line {
+      height: 1px;
+      background: var(--gold);
+      opacity: .65;
+      flex: 1;
+    }
+
+    .view-all {
+      border: 1px solid #b7aa96;
+      padding: 9px 13px;
+      border-radius: 4px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 13px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image {
+      height: 185px;
+      position: relative;
+      background: #eee1d1;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .4s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+    .new-badge {
+      position: absolute;
+      top: 10px;
+      left: 9px;
+      background: var(--green);
+      color: white;
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-size: 10px;
+      z-index: 1;
+    }
+
+    .product-info {
+      padding: 11px 10px 12px;
+    }
+
+    .product-name {
+      font-size: 11px;
+      min-height: 30px;
+      line-height: 1.5;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .add-cart {
+      border: 0;
+      background: var(--green);
+      color: white;
+      width: 27px;
+      height: 27px;
+      border-radius: 4px;
+      font-size: 15px;
+      display: grid;
+      place-items: center;
+    }
+
+    /* Features */
+    .features {
+      background: var(--green);
+      color: white;
+      margin-top: 25px;
+      padding: 23px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 0 24px;
+      border-right: 1px solid rgba(222, 195, 132, .35);
+    }
+
+    .feature:first-child {
+      padding-left: 0;
+    }
+
+    .feature:last-child {
+      border: 0;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      color: #d6b66c;
+    }
+
+    .feature strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      color: #e6e1d7;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* Offer */
+    .offer {
+      padding: 18px 0;
+    }
+
+    .offer-inner {
+      min-height: 115px;
+      border-radius: 11px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 20px 7%;
+      background:
+        linear-gradient(90deg, rgba(245,229,207,.1), rgba(245,229,207,.85)),
+        url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=85') center/cover;
+    }
+
+    .offer-content {
+      text-align: center;
+    }
+
+    .offer-content .script {
+      font-size: 20px;
+    }
+
+    .offer-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      line-height: 1.15;
+    }
+
+    .offer-content p {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      margin: 3px 0 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-green);
+      color: white;
+      padding: 38px 0 12px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.35fr;
+      gap: 35px;
+    }
+
+    .footer-brand .logo-text strong {
+      font-size: 29px;
+    }
+
+    .footer-brand p {
+      color: #d8d8cb;
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 220px;
+      margin: 17px 0;
+    }
+
+    .socials {
+      display: flex;
+      gap: 15px;
+      font-size: 17px;
+    }
+
+    footer h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: #e8d3a0;
+      margin-bottom: 17px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 11px;
+      color: #e1e1d6;
+      font-size: 12px;
+    }
+
+    footer li a:hover {
+      color: #e8d3a0;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .contact-item span:first-child {
+      color: #d7b86f;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(220, 204, 165, .3);
+      margin-top: 25px;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 11px;
+      color: #d6d8cd;
+    }
+
+    .footer-bottom span:last-child {
+      color: #e4c67c;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      nav {
+        gap: 13px;
+      }
+
+      .navbar {
+        gap: 15px;
+      }
+
+      .category-grid,
+      .products {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .category-card {
+        height: 210px;
+      }
+
+      .product-image {
+        height: 240px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar .container {
+        font-size: 10px;
+      }
+
+      .navbar {
+        min-height: 70px;
+      }
+
+      .logo-mark {
+        font-size: 43px;
+      }
+
+      .logo-text strong {
+        font-size: 24px;
+      }
+
+      .logo-text small {
+        font-size: 9px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .header-actions {
+        margin-left: auto;
+        gap: 13px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding: 40px 5%;
+        text-align: center;
+      }
+
+      .hero h1 {
+        margin: auto;
+      }
+
+      .hero p {
+        margin: 20px auto;
+      }
+
+      .hero .ornament {
+        justify-content: center;
+      }
+
+      .hero-image {
+        height: 330px;
+      }
+
+      .category-grid,
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category-card {
+        height: 230px;
+      }
+
+      .product-image {
+        height: 230px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 0;
+      }
+
+      .feature {
+        padding: 0 15px;
+      }
+
+      .feature:nth-child(2) {
+        border: 0;
+      }
+
+      .feature:nth-child(3) {
+        padding-left: 0;
+      }
+
+      .offer-inner {
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer-grid {
+        gap: 28px 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .topbar .container {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .category-card {
+        height: 180px;
+      }
+
+      .product-image {
+        height: 190px;
+      }
+
+      .product-name {
+        font-size: 10px;
+      }
+
+      .price {
+        font-size: 12px;
+      }
+
+      .feature {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 5px !important;
+        border: 0 !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <span>✦ Welcome to Sofi Cloth Store</span>
+      <span>Beautiful Fabrics, Elegant You</span>
+      <span>◉ Track Order &nbsp; | &nbsp; ♧ Need Help?</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+
+      <a href="#" class="logo">
+        <span class="logo-mark">S</span>
+        <span class="logo-text">
+          <strong>SOFI</strong>
+          <small>CLOTH STORE</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+      <nav id="mainNav">
+        <a href="#" class="active">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Three Piece</a>
+        <a href="#shop">Women's Wear</a>
+        <a href="#new-arrivals">New Arrivals</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" aria-label="Search">⌕</a>
+        <a href="#" aria-label="Account">♙</a>
+        <a href="#cart" aria-label="Cart">
+          ♧
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner container">
+
+      <div class="hero-content">
+        <div class="script">Elegant Style</div>
+        <h1>FOR EVERY<br>WOMAN</h1>
+
+        <div class="ornament">✦</div>
+
+        <p>
+          Discover our exclusive collection of premium
+          Three Piece & Women's Wear.
+        </p>
+
+        <a href="#shop" class="btn btn-primary">SHOP NOW ♧</a>
+        <a href="#categories" class="btn btn-outline">VIEW COLLECTION</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85"
+          alt="Elegant women's fashion collection">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section" id="categories">
+    <div class="container">
+
+      <h2 class="section-title">Shop By Category</h2>
+
+      <div class="category-grid">
+
+        <a href="#shop" class="category-card">
+          <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85" alt="Three Piece">
+          <div class="category-label">
+            <strong>Three Piece</strong>
+            <span>Explore Now →</span>
+          </div>
+        </a>
+
+        <a href="#shop" class="category-card">
+          <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=500&q=85" alt="Unstitched">
+          <div class="category-label">
+            <strong>Unstitched</strong>
+            <span>Explore Now →</span>
+          </div>
+        </a>
+
+        <a href="#shop" class="category-card">
+          <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?auto=format&fit=crop&w=500&q=85" alt="Ready to Wear">
+          <div class="category-label">
+            <strong>Ready to Wear</strong>
+            <span>Explore Now →</span>
+          </div>
+        </a>
+
+        <a href="#shop" class="category-card">
+          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=500&q=85" alt="Shawls and Dupatta">
+          <div class="category-label">
+            <strong>Shawls & Dupatta</strong>
+            <span>Explore Now →</span>
+          </div>
+        </a>
+
+        <a href="#shop" class="category-card">
+          <img src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=500&q=85" alt="Hijab and Scarves">
+          <div class="category-label">
+            <strong>Hijab & Scarves</strong>
+            <span>Explore Now →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals -->
+  <section class="section" id="new-arrivals">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2>New Arrivals</h2>
+        <div class="heading-line"></div>
+        <a href="#shop" class="view-all">View All Products →</a>
+      </div>
+
+      <div class="products" id="shop">
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="new-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1610030469668-8e9f641aaf7e?auto=format&fit=crop&w=500&q=85" alt="Floral Lawn Three Piece">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Floral Lawn Three Piece</div>
+            <div class="product-bottom">
+              <span class="price">৳ 1,450</span>
+              <button class="add-cart" data-name="Floral Lawn Three Piece" aria-label="Add to cart">♧</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="new-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=85" alt="Digital Printed Three Piece">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Digital Printed Three Piece</div>
+            <div class="product-bottom">
+              <span class="price">৳ 1,350</span>
+              <button class="add-cart" data-name="Digital Printed Three Piece" aria-label="Add to cart">♧</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="new-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85" alt="Embroidered Lawn Three Piece">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Embroidered Lawn Three Piece</div>
+            <div class="product-bottom">
+              <span class="price">৳ 1,650</span>
+              <button class="add-cart" data-name="Embroidered Lawn Three Piece" aria-label="Add to cart">♧</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="new-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=500&q=85" alt="Premium Cotton Three Piece">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Premium Cotton Three Piece</div>
+            <div class="product-bottom">
+              <span class="price">৳ 1,250</span>
+              <button class="add-cart" data-name="Premium Cotton Three Piece" aria-label="Add to cart">♧</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="new-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=500&q=85" alt="Luxury Chiffon Three Piece">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Luxury Chiffon Three Piece</div>
+            <div class="product-bottom">
+              <span class="price">৳ 1,850</span>
+              <button class="add-cart" data-name="Luxury Chiffon Three Piece" aria-label="Add to cart">♧</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">♕</div>
+        <div>
+          <strong>Premium Quality</strong>
+          <p>We ensure the best quality fabrics for you.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">♧</div>
+        <div>
+          <strong>Fast Delivery</strong>
+          <p>Get your order delivered at your doorstep.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">♙</div>
+        <div>
+          <strong>Secure Payment</strong>
+          <p>100% secure payment gateway.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">♧</div>
+        <div>
+          <strong>Customer Support</strong>
+          <p>We are here to help you anytime.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Offer Banner -->
+  <section class="offer">
+    <div class="container offer-inner">
+
+      <div class="offer-content">
+        <div class="script">Special Offer</div>
+        <h2>NEW COLLECTION</h2>
+        <p>UP TO 30% OFF</p>
+        <a href="#shop" class="btn btn-primary">SHOP NOW</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="about">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-mark">S</span>
+            <span class="logo-text">
+              <strong>SOFI</strong>
+              <small>CLOTH STORE</small>
+            </span>
+          </a>
+
+          <p>
+            We bring you the latest fashion in Three Piece
+            and Women's Wear with premium quality and
+            affordable prices.
+          </p>
+
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="TikTok">♪</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#categories">Three Piece</a></li>
+            <li><a href="#shop">Women's Wear</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Return & Refund Policy</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div id="contact">
+          <h3>Contact Us</h3>
+          <ul>
+            <li class="contact-item">
+              <span>♧</span>
+              <span>+880 1723 456 789</span>
+            </li>
+            <li class="contact-item">
+              <span>✉</span>
+              <span>info@soficlothstore.com</span>
+            </li>
+            <li class="contact-item">
+              <span>⌖</span>
+              <span>Moulvibazar, Sylhet, Bangladesh</span>
+            </li>
+            <li class="contact-item">
+              <span>◷</span>
+              <span>10:00 AM – 10:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2024 Sofi Cloth Store. All Rights Reserved.</span>
+        <span>Designed with ♥ for our customers</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const cartCount = document.getElementById('cartCount');
+
+    let cart = 0;
+
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.add-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        cart++;
+        cartCount.textContent = cart;
+
+        const original = button.textContent;
+        button.textContent = '✓';
+
+        setTimeout(() => {
+          button.textContent = original;
+        }, 900);
+      });
+    });
+
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('show');
+      });
+    });
+  </script>
+
+</body>
+</html>
