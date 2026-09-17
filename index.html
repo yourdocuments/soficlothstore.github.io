@@ -2,1185 +2,1390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sofi Cloth Store | Elegant Fashion</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap');
-
-    :root {
-      --green: #123d2c;
-      --dark-green: #092d20;
-      --gold: #b69a60;
-      --cream: #faf6ef;
-      --border: #e2d5c3;
-      --text: #172d23;
-      --white: #fffdf9;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: var(--cream);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    /* Top Bar */
-    .topbar {
-      background: var(--green);
-      color: white;
-      font-size: 12px;
-      padding: 8px 0;
-    }
-
-    .topbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    /* Header */
-    header {
-      background: var(--white);
-      border-bottom: 1px solid #eee5d9;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .navbar {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      flex-shrink: 0;
-    }
-
-    .logo-mark {
-      color: var(--gold);
-      font-family: 'Playfair Display', serif;
-      font-size: 53px;
-      line-height: 1;
-      font-weight: 500;
-    }
-
-    .logo-text strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      line-height: 1;
-      letter-spacing: 1px;
-    }
-
-    .logo-text small {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    nav a {
-      padding: 8px 0;
-      transition: .2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--gold);
-      border-bottom: 1px solid var(--gold);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 17px;
-      font-size: 23px;
-    }
-
-    .header-actions a {
-      position: relative;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -10px;
-      width: 17px;
-      height: 17px;
-      background: var(--green);
-      color: white;
-      border-radius: 50%;
-      font-size: 10px;
-      display: grid;
-      place-items: center;
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 28px;
-      color: var(--green);
-    }
-
-    /* Hero */
-    .hero {
-      background: #f0e5d7;
-      overflow: hidden;
-    }
-
-    .hero-inner {
-      min-height: 420px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-    }
-
-    .hero-content {
-      padding: 40px 0 40px 8%;
-      position: relative;
-      z-index: 1;
-    }
-
-    .script {
-      color: var(--gold);
-      font-family: 'Parisienne', cursive;
-      font-size: 42px;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 4vw, 59px);
-      line-height: 1.08;
-      letter-spacing: 1px;
-      font-weight: 600;
-      max-width: 460px;
-    }
-
-    .ornament {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      color: var(--gold);
-      margin: 20px 0;
-      font-size: 19px;
-    }
-
-    .ornament::before,
-    .ornament::after {
-      content: "";
-      height: 1px;
-      width: 50px;
-      background: var(--gold);
-    }
-
-    .hero p {
-      max-width: 370px;
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 23px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 13px 25px;
-      border-radius: 4px;
-      border: 1px solid var(--green);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .3px;
-      transition: .25s;
-    }
-
-    .btn-primary {
-      color: white;
-      background: var(--green);
-    }
-
-    .btn-primary:hover {
-      background: var(--dark-green);
-    }
-
-    .btn-outline {
-      background: transparent;
-      margin-left: 10px;
-    }
-
-    .btn-outline:hover {
-      background: white;
-    }
-
-    .hero-image {
-      height: 420px;
-      overflow: hidden;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* Sections */
-    .section {
-      padding: 25px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 25px;
-      font-weight: 600;
-      margin-bottom: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .section-title::before,
-    .section-title::after {
-      content: "✦";
-      color: var(--gold);
-      font-size: 13px;
-      border-top: 1px solid var(--gold);
-      width: 65px;
-      padding-top: 2px;
-    }
-
-    /* Categories */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 13px;
-    }
-
-    .category-card {
-      height: 190px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 11px;
-      background: #ead8c5;
-    }
-
-    .category-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s;
-    }
-
-    .category-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .category-label {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--green);
-      color: white;
-      padding: 12px 14px;
-    }
-
-    .category-label strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-
-    .category-label span {
-      color: #e7d4a6;
-      font-size: 11px;
-    }
-
-    /* Products */
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin: 25px 0 17px;
-    }
-
-    .section-heading h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 25px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .heading-line {
-      height: 1px;
-      background: var(--gold);
-      opacity: .65;
-      flex: 1;
-    }
-
-    .view-all {
-      border: 1px solid #b7aa96;
-      padding: 9px 13px;
-      border-radius: 4px;
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 13px;
-    }
-
-    .product-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .product-image {
-      height: 185px;
-      position: relative;
-      background: #eee1d1;
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: .4s;
-    }
-
-    .product-card:hover .product-image img {
-      transform: scale(1.04);
-    }
-
-    .new-badge {
-      position: absolute;
-      top: 10px;
-      left: 9px;
-      background: var(--green);
-      color: white;
-      border-radius: 4px;
-      padding: 5px 8px;
-      font-size: 10px;
-      z-index: 1;
-    }
-
-    .product-info {
-      padding: 11px 10px 12px;
-    }
-
-    .product-name {
-      font-size: 11px;
-      min-height: 30px;
-      line-height: 1.5;
-    }
-
-    .product-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .price {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .add-cart {
-      border: 0;
-      background: var(--green);
-      color: white;
-      width: 27px;
-      height: 27px;
-      border-radius: 4px;
-      font-size: 15px;
-      display: grid;
-      place-items: center;
-    }
-
-    /* Features */
-    .features {
-      background: var(--green);
-      color: white;
-      margin-top: 25px;
-      padding: 23px 0;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .feature {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      padding: 0 24px;
-      border-right: 1px solid rgba(222, 195, 132, .35);
-    }
-
-    .feature:first-child {
-      padding-left: 0;
-    }
-
-    .feature:last-child {
-      border: 0;
-    }
-
-    .feature-icon {
-      font-size: 30px;
-      color: #d6b66c;
-    }
-
-    .feature strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .feature p {
-      color: #e6e1d7;
-      font-size: 10px;
-      line-height: 1.5;
-    }
-
-    /* Offer */
-    .offer {
-      padding: 18px 0;
-    }
-
-    .offer-inner {
-      min-height: 115px;
-      border-radius: 11px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 20px 7%;
-      background:
-        linear-gradient(90deg, rgba(245,229,207,.1), rgba(245,229,207,.85)),
-        url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=85') center/cover;
-    }
-
-    .offer-content {
-      text-align: center;
-    }
-
-    .offer-content .script {
-      font-size: 20px;
-    }
-
-    .offer-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 29px;
-      line-height: 1.15;
-    }
-
-    .offer-content p {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      margin: 3px 0 10px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark-green);
-      color: white;
-      padding: 38px 0 12px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.35fr;
-      gap: 35px;
-    }
-
-    .footer-brand .logo-text strong {
-      font-size: 29px;
-    }
-
-    .footer-brand p {
-      color: #d8d8cb;
-      font-size: 12px;
-      line-height: 1.7;
-      max-width: 220px;
-      margin: 17px 0;
-    }
-
-    .socials {
-      display: flex;
-      gap: 15px;
-      font-size: 17px;
-    }
-
-    footer h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      color: #e8d3a0;
-      margin-bottom: 17px;
-    }
-
-    footer ul {
-      list-style: none;
-    }
-
-    footer li {
-      margin-bottom: 11px;
-      color: #e1e1d6;
-      font-size: 12px;
-    }
-
-    footer li a:hover {
-      color: #e8d3a0;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .contact-item span:first-child {
-      color: #d7b86f;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(220, 204, 165, .3);
-      margin-top: 25px;
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      font-size: 11px;
-      color: #d6d8cd;
-    }
-
-    .footer-bottom span:last-child {
-      color: #e4c67c;
-    }
-
-    /* Responsive */
-    @media (max-width: 1000px) {
-      nav {
-        gap: 13px;
-      }
-
-      .navbar {
-        gap: 15px;
-      }
-
-      .category-grid,
-      .products {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .category-card {
-        height: 210px;
-      }
-
-      .product-image {
-        height: 240px;
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .topbar .container {
-        font-size: 10px;
-      }
-
-      .navbar {
-        min-height: 70px;
-      }
-
-      .logo-mark {
-        font-size: 43px;
-      }
-
-      .logo-text strong {
-        font-size: 24px;
-      }
-
-      .logo-text small {
-        font-size: 9px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      .header-actions {
-        margin-left: auto;
-        gap: 13px;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-content {
-        padding: 40px 5%;
-        text-align: center;
-      }
-
-      .hero h1 {
-        margin: auto;
-      }
-
-      .hero p {
-        margin: 20px auto;
-      }
-
-      .hero .ornament {
-        justify-content: center;
-      }
-
-      .hero-image {
-        height: 330px;
-      }
-
-      .category-grid,
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .category-card {
-        height: 230px;
-      }
-
-      .product-image {
-        height: 230px;
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px 0;
-      }
-
-      .feature {
-        padding: 0 15px;
-      }
-
-      .feature:nth-child(2) {
-        border: 0;
-      }
-
-      .feature:nth-child(3) {
-        padding-left: 0;
-      }
-
-      .offer-inner {
-        justify-content: center;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .footer-grid {
-        gap: 28px 20px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .topbar .container {
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .section-title {
-        font-size: 22px;
-      }
-
-      .category-card {
-        height: 180px;
-      }
-
-      .product-image {
-        height: 190px;
-      }
-
-      .product-name {
-        font-size: 10px;
-      }
-
-      .price {
-        font-size: 12px;
-      }
-
-      .feature {
-        flex-direction: column;
-        text-align: center;
-        padding: 0 5px !important;
-        border: 0 !important;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sofi Cloth Store - Premium Women's Fashion">
+<title>SOFI CLOTH STORE | Elegant Fashion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --green:#153d2d;
+  --deep:#0b2b20;
+  --gold:#b9975b;
+  --cream:#f8f4ed;
+  --white:#fffdf9;
+  --text:#1a2c23;
+  --muted:#777970;
+  --line:#e7ded1;
+  --soft:#efe5d7;
+  --shadow:0 15px 45px rgba(26,45,35,.07);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.container{width:min(1180px,92%);margin:auto}
+
+/* Announcement */
+.announcement{
+  background:var(--green);
+  color:#eee8db;
+  font-size:11px;
+  letter-spacing:.4px;
+}
+.announcement .container{
+  min-height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.announcement span{opacity:.9}
+
+/* Header */
+.header{
+  background:rgba(255,253,249,.97);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.navbar{
+  min-height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+.brand-symbol{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  font-size:53px;
+  font-weight:500;
+  line-height:1;
+}
+.brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  letter-spacing:1.5px;
+  line-height:1;
+}
+.brand-sub{
+  font-size:10px;
+  letter-spacing:2.7px;
+  margin-top:6px;
+  text-align:center;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
+  font-size:12px;
+  font-weight:500;
+}
+.nav-links a{
+  position:relative;
+  padding:34px 0;
+  transition:.25s;
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  bottom:25px;
+  left:0;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:.25s;
+}
+.nav-links a:hover,
+.nav-links a.active{color:var(--gold)}
+.nav-links a:hover::after,
+.nav-links a.active::after{width:100%}
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:17px;
+}
+.icon-btn{
+  position:relative;
+  width:29px;
+  height:34px;
+  border:0;
+  background:transparent;
+  color:var(--green);
+  display:grid;
+  place-items:center;
+}
+.icon-btn svg{width:21px;height:21px;stroke-width:1.5}
+.count{
+  position:absolute;
+  top:0;
+  right:-4px;
+  width:16px;
+  height:16px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  font-size:9px;
+}
+.menu-btn{display:none}
+
+/* Hero */
+.hero{
+  background:#f1e6d8;
+  position:relative;
+  overflow:hidden;
+}
+.hero-inner{
+  min-height:555px;
+  display:grid;
+  grid-template-columns:47% 53%;
+  align-items:stretch;
+}
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px 20px 60px 7%;
+  position:relative;
+  z-index:2;
+}
+.eyebrow{
+  color:var(--gold);
+  font-family:'Parisienne',cursive;
+  font-size:38px;
+  line-height:1.3;
+  margin-bottom:10px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(43px,4.5vw,68px);
+  font-weight:600;
+  line-height:1.06;
+  letter-spacing:-1px;
+  color:var(--green);
+}
+.hero-divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:25px 0 20px;
+  color:var(--gold);
+}
+.hero-divider span{
+  width:57px;
+  height:1px;
+  background:var(--gold);
+}
+.hero-divider b{font-size:15px;font-weight:400}
+.hero p{
+  color:#5d625a;
+  font-size:13px;
+  line-height:1.9;
+  max-width:340px;
+  margin-bottom:28px;
+}
+.buttons{display:flex;flex-wrap:wrap;gap:11px}
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  border:1px solid var(--green);
+  border-radius:3px;
+  padding:14px 23px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.6px;
+  transition:.3s;
+}
+.btn-primary{background:var(--green);color:white}
+.btn-primary:hover{background:var(--deep);transform:translateY(-2px)}
+.btn-light{background:rgba(255,255,255,.3);color:var(--green)}
+.btn-light:hover{background:white}
+.hero-visual{
+  position:relative;
+  min-height:555px;
+  overflow:hidden;
+}
+.hero-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.hero-tag{
+  position:absolute;
+  right:28px;
+  bottom:28px;
+  background:rgba(255,253,249,.93);
+  padding:17px 22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+.hero-tag small{
+  display:block;
+  color:var(--gold);
+  font-family:'Parisienne',cursive;
+  font-size:20px;
+}
+.hero-tag strong{
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  font-weight:500;
+}
+.hero-arrows{
+  position:absolute;
+  left:22px;
+  bottom:22px;
+  display:flex;
+  gap:8px;
+}
+.hero-arrow{
+  width:34px;
+  height:34px;
+  border:1px solid rgba(21,61,45,.3);
+  border-radius:50%;
+  background:rgba(255,255,255,.65);
+  color:var(--green);
+}
+
+/* General sections */
+.section{padding:75px 0}
+.section-head{text-align:center;margin-bottom:38px}
+.kicker{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  color:var(--green);
+  font-size:clamp(28px,3vw,38px);
+  font-weight:600;
+}
+.section-desc{
+  color:var(--muted);
+  font-size:12px;
+  max-width:470px;
+  line-height:1.8;
+  margin:12px auto 0;
+}
+.gold-line{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  color:var(--gold);
+  margin-top:16px;
+}
+.gold-line span{height:1px;width:50px;background:var(--gold)}
+.gold-line b{font-weight:400;font-size:12px}
+
+/* Categories */
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:16px;
+}
+.category-card{
+  position:relative;
+  height:300px;
+  overflow:hidden;
+  border-radius:5px;
+  background:var(--soft);
+  box-shadow:var(--shadow);
+}
+.category-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s;
+}
+.category-card:hover img{transform:scale(1.07)}
+.category-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 35%,rgba(9,36,26,.82));
+}
+.category-info{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:23px 18px;
+  z-index:1;
+  color:white;
+}
+.category-info h3{
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+.category-info span{
+  color:#e8d4a5;
+  font-size:10px;
+  letter-spacing:.8px;
+}
+
+/* Products */
+.products-section{background:#fcf9f4}
+.product-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:30px;
+}
+.product-top .section-head{text-align:left;margin:0}
+.product-top .section-desc{margin:10px 0 0}
+.view-link{
+  border-bottom:1px solid var(--gold);
+  color:var(--green);
+  font-size:11px;
+  font-weight:700;
+  padding-bottom:5px;
+  white-space:nowrap;
+}
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.product-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:5px;
+  overflow:hidden;
+  transition:.3s;
+}
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+.product-image{
+  height:315px;
+  background:#eee2d4;
+  position:relative;
+  overflow:hidden;
+}
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+.product-card:hover .product-image img{transform:scale(1.04)}
+.badge{
+  position:absolute;
+  left:13px;
+  top:13px;
+  z-index:2;
+  background:var(--green);
+  color:white;
+  font-size:10px;
+  padding:6px 10px;
+  border-radius:2px;
+}
+.wishlist{
+  position:absolute;
+  right:13px;
+  top:13px;
+  width:32px;
+  height:32px;
+  border:0;
+  background:rgba(255,253,249,.9);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--green);
+  z-index:2;
+}
+.wishlist svg{width:17px}
+.wishlist.active{color:#b44b4b}
+.product-info{padding:17px}
+.product-category{
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.product-name{
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  color:var(--green);
+  line-height:1.35;
+  min-height:43px;
+}
+.rating{
+  font-size:10px;
+  color:var(--gold);
+  margin:9px 0;
+}
+.rating span{color:var(--muted);margin-left:5px}
+.product-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-top:1px solid var(--line);
+  padding-top:13px;
+}
+.price{font-weight:700;font-size:15px}
+.old-price{
+  font-size:11px;
+  color:#999;
+  text-decoration:line-through;
+  margin-left:5px;
+  font-weight:400;
+}
+.add-btn{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:var(--green);
+  color:white;
+  border:0;
+  border-radius:3px;
+  padding:9px 12px;
+  font-size:10px;
+  font-weight:700;
+}
+.add-btn svg{width:15px}
+
+/* Trust features */
+.features{
+  background:var(--green);
+  color:white;
+  padding:35px 0;
+}
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.feature{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:8px 30px;
+  border-right:1px solid rgba(224,198,138,.35);
+}
+.feature:first-child{padding-left:0}
+.feature:last-child{border:0}
+.feature-icon{color:#d5b56e}
+.feature-icon svg{width:36px;height:36px;stroke-width:1.3}
+.feature h3{
+  font-family:'Playfair Display',serif;
+  font-size:15px;
+  font-weight:500;
+  margin-bottom:5px;
+}
+.feature p{
+  color:#d7d9ce;
+  font-size:10px;
+  line-height:1.6;
+}
+
+/* Collection banner */
+.collection{padding:28px 0}
+.collection-banner{
+  min-height:250px;
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:30px 8%;
+  background:
+    linear-gradient(90deg,rgba(239,223,201,.15),rgba(239,223,201,.93)),
+    url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1600&q=85') center/cover;
+}
+.collection-content{text-align:center}
+.collection-content .eyebrow{font-size:25px;margin:0}
+.collection-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:37px;
+  color:var(--green);
+  line-height:1.15;
+  margin:5px 0;
+}
+.collection-content p{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  letter-spacing:2px;
+  margin-bottom:18px;
+}
+
+/* About */
+.about{
+  background:#f0e6d9;
+  padding:75px 0;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:70px;
+}
+.about-image{
+  height:430px;
+  overflow:hidden;
+  border-radius:5px;
+}
+.about-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.about-content .section-head{text-align:left;margin-bottom:18px}
+.about-content .section-desc{margin:0 0 25px;max-width:440px}
+.about-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-bottom:28px;
+}
+.about-point{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+}
+.about-point span{
+  color:var(--gold);
+  font-size:18px;
+}
+
+/* Newsletter */
+.newsletter{
+  padding:65px 0;
+  text-align:center;
+  background:var(--white);
+}
+.newsletter h2{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  margin-bottom:10px;
+}
+.newsletter p{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:24px;
+}
+.subscribe{
+  width:min(470px,100%);
+  margin:auto;
+  display:flex;
+  border:1px solid var(--line);
+  background:white;
+  border-radius:3px;
+  overflow:hidden;
+}
+.subscribe input{
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  padding:15px;
+  background:transparent;
+  font:inherit;
+  font-size:12px;
+}
+.subscribe button{
+  background:var(--green);
+  color:white;
+  border:0;
+  padding:0 23px;
+  font-size:11px;
+  font-weight:700;
+}
+
+/* Footer */
+footer{
+  background:var(--deep);
+  color:white;
+  padding:65px 0 20px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.35fr;
+  gap:45px;
+}
+.footer-brand p{
+  color:#d0d6cc;
+  font-size:12px;
+  line-height:1.9;
+  max-width:245px;
+  margin:20px 0;
+}
+.footer-title{
+  color:#e4c98e;
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-weight:500;
+  margin-bottom:22px;
+}
+.footer-links{list-style:none}
+.footer-links li{
+  color:#d5dacf;
+  font-size:12px;
+  margin-bottom:13px;
+}
+.footer-links a:hover{color:#e4c98e}
+.socials{display:flex;gap:11px}
+.socials a{
+  width:31px;
+  height:31px;
+  border:1px solid rgba(226,202,151,.35);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  transition:.2s;
+}
+.socials a:hover{background:var(--gold);color:var(--deep)}
+.contact-list{list-style:none}
+.contact-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-size:12px;
+  line-height:1.7;
+  color:#d5dacf;
+  margin-bottom:15px;
+}
+.contact-list svg{
+  flex-shrink:0;
+  width:16px;
+  color:#d5b56e;
+  margin-top:2px;
+}
+.footer-bottom{
+  border-top:1px solid rgba(226,202,151,.22);
+  margin-top:45px;
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  color:#c4cdc2;
+  font-size:11px;
+}
+.footer-bottom span:last-child{color:#e4c98e}
+
+/* Toast */
+.toast{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  background:var(--green);
+  color:white;
+  padding:14px 20px;
+  border-radius:4px;
+  font-size:12px;
+  box-shadow:var(--shadow);
+  transform:translateY(120px);
+  opacity:0;
+  transition:.3s;
+  z-index:2000;
+}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* Responsive */
+@media(max-width:1050px){
+  .nav-links{gap:14px}
+  .category-grid{grid-template-columns:repeat(3,1fr)}
+  .category-card{height:270px}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .product-image{height:300px}
+  .feature{padding:8px 18px}
+  .footer-grid{gap:25px}
+}
+@media(max-width:780px){
+  .announcement .container{justify-content:center}
+  .announcement span:last-child{display:none}
+  .navbar{min-height:76px}
+  .brand-symbol{font-size:45px}
+  .brand-name{font-size:25px}
+  .brand-sub{font-size:9px}
+  .menu-btn{display:grid}
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:76px;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+    padding:10px 5%;
+  }
+  .nav-links.show{display:flex}
+  .nav-links a{padding:13px 0;width:100%}
+  .nav-links a::after{bottom:5px}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-content{
+    text-align:center;
+    padding:65px 5% 50px;
+  }
+  .hero h1{font-size:clamp(43px,10vw,62px)}
+  .hero p{margin:0 auto 28px}
+  .hero-divider{justify-content:center}
+  .buttons{justify-content:center}
+  .hero-visual{height:430px;min-height:0}
+  .hero-arrows{left:20px}
+  .hero-tag{right:20px;bottom:20px}
+  .section{padding:55px 0}
+  .category-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .category-card{height:250px}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:13px}
+  .product-image{height:260px}
+  .product-info{padding:13px}
+  .product-name{font-size:15px}
+  .add-btn{padding:9px}
+  .add-btn span{display:none}
+  .feature-grid{grid-template-columns:repeat(2,1fr);gap:25px 0}
+  .feature{border:0;padding:8px 15px}
+  .feature:first-child,.feature:nth-child(3){padding-left:0}
+  .collection-banner{justify-content:center;padding:25px}
+  .collection-content h2{font-size:32px}
+  .about-grid{grid-template-columns:1fr;gap:35px}
+  .about-image{height:350px}
+  .about-content .section-head{text-align:center}
+  .about-content .section-desc{margin:0 auto 25px}
+  .about-content{text-align:center}
+  .about-points{text-align:left}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:460px){
+  .hero-content{padding-top:45px}
+  .eyebrow{font-size:31px}
+  .hero-visual{height:350px}
+  .section-title{font-size:28px}
+  .category-card{height:205px}
+  .category-info{padding:16px 12px}
+  .category-info h3{font-size:16px}
+  .product-image{height:215px}
+  .product-name{font-size:14px;min-height:40px}
+  .price{font-size:13px}
+  .old-price{display:none}
+  .product-bottom{align-items:center}
+  .product-top{align-items:flex-start;flex-direction:column;gap:14px}
+  .feature{flex-direction:column;text-align:center;gap:9px;padding:0 8px!important}
+  .feature h3{font-size:14px}
+  .feature p{font-size:10px}
+  .about-points{gap:15px}
+  .about-point{font-size:11px}
+  .subscribe button{padding:0 15px}
+  .footer-grid{grid-template-columns:1fr;gap:35px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .toast{left:15px;right:15px;bottom:15px;text-align:center}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Top Bar -->
-  <div class="topbar">
-    <div class="container">
-      <span>✦ Welcome to Sofi Cloth Store</span>
-      <span>Beautiful Fabrics, Elegant You</span>
-      <span>◉ Track Order &nbsp; | &nbsp; ♧ Need Help?</span>
-    </div>
+<!-- Announcement Bar -->
+<div class="announcement">
+  <div class="container">
+    <span>✦ Welcome to Sofi Cloth Store</span>
+    <span>Beautiful Fabrics, Elegant You</span>
+    <span>Track Order &nbsp; | &nbsp; Need Help?</span>
   </div>
+</div>
 
-  <!-- Header -->
-  <header>
-    <div class="container navbar">
+<!-- Header -->
+<header class="header">
+  <div class="container navbar">
 
-      <a href="#" class="logo">
-        <span class="logo-mark">S</span>
-        <span class="logo-text">
-          <strong>SOFI</strong>
-          <small>CLOTH STORE</small>
-        </span>
+    <a href="#" class="brand">
+      <span class="brand-symbol">S</span>
+      <span>
+        <div class="brand-name">SOFI</div>
+        <div class="brand-sub">CLOTH STORE</div>
+      </span>
+    </a>
+
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#" class="active">Home</a>
+      <a href="#categories">Shop</a>
+      <a href="#products">Three Piece</a>
+      <a href="#products">Women's Wear</a>
+      <a href="#products">New Arrivals</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search" onclick="showMessage('Search feature coming soon')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="10.5" cy="10.5" r="6.5"/>
+          <path d="m16 16 5 5"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn" aria-label="Account" onclick="showMessage('Account feature coming soon')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 21c.7-4.4 3.4-7 8-7s7.3 2.6 8 7"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn" aria-label="Shopping cart" onclick="showMessage('Your cart has '+cartCount+' item(s)')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M3 4h2l2.5 12h10L21 7H6"/>
+          <circle cx="9" cy="20" r="1"/>
+          <circle cx="17" cy="20" r="1"/>
+        </svg>
+        <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-inner container">
+
+    <div class="hero-content">
+      <div class="eyebrow">Elegant Style</div>
+      <h1>FOR EVERY<br>WOMAN</h1>
+
+      <div class="hero-divider">
+        <span></span><b>✦</b><span></span>
+      </div>
+
+      <p>
+        Discover our exclusive collection of premium
+        Three Piece and Women's Wear, designed to
+        bring elegance to every moment.
+      </p>
+
+      <div class="buttons">
+        <a href="#products" class="btn btn-primary">
+          SHOP NOW
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+        <a href="#categories" class="btn btn-light">VIEW COLLECTION</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img
+        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85"
+        alt="Elegant women's clothing collection">
+
+      <div class="hero-tag">
+        <small>New Season</small>
+        <strong>Timeless Elegance</strong>
+      </div>
+
+      <div class="hero-arrows">
+        <button class="hero-arrow" onclick="showMessage('Previous collection')">←</button>
+        <button class="hero-arrow" onclick="showMessage('Next collection')">→</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section" id="categories">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="kicker">Explore Our Collection</div>
+      <h2 class="section-title">Shop By Category</h2>
+      <div class="gold-line"><span></span><b>✦</b><span></span></div>
+    </div>
+
+    <div class="category-grid">
+
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=85" alt="Three Piece">
+        <div class="category-info">
+          <h3>Three Piece</h3>
+          <span>EXPLORE NOW →</span>
+        </div>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=600&q=85" alt="Unstitched">
+        <div class="category-info">
+          <h3>Unstitched</h3>
+          <span>EXPLORE NOW →</span>
+        </div>
+      </a>
 
-      <nav id="mainNav">
-        <a href="#" class="active">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#categories">Three Piece</a>
-        <a href="#shop">Women's Wear</a>
-        <a href="#new-arrivals">New Arrivals</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact Us</a>
-      </nav>
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?auto=format&fit=crop&w=600&q=85" alt="Ready to Wear">
+        <div class="category-info">
+          <h3>Ready to Wear</h3>
+          <span>EXPLORE NOW →</span>
+        </div>
+      </a>
 
-      <div class="header-actions">
-        <a href="#" aria-label="Search">⌕</a>
-        <a href="#" aria-label="Account">♙</a>
-        <a href="#cart" aria-label="Cart">
-          ♧
-          <span class="cart-count" id="cartCount">0</span>
-        </a>
-      </div>
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=85" alt="Shawls and Dupatta">
+        <div class="category-info">
+          <h3>Shawls & Dupatta</h3>
+          <span>EXPLORE NOW →</span>
+        </div>
+      </a>
+
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=600&q=85" alt="Hijab and Scarves">
+        <div class="category-info">
+          <h3>Hijab & Scarves</h3>
+          <span>EXPLORE NOW →</span>
+        </div>
+      </a>
 
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner container">
+<!-- Products -->
+<section class="section products-section" id="products">
+  <div class="container">
 
-      <div class="hero-content">
-        <div class="script">Elegant Style</div>
-        <h1>FOR EVERY<br>WOMAN</h1>
+    <div class="product-top">
+      <div class="section-head">
+        <div class="kicker">Our Latest Collection</div>
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-desc">
+          Discover our latest designs, crafted for your
+          everyday elegance and special moments.
+        </p>
+      </div>
 
-        <div class="ornament">✦</div>
+      <a href="#products" class="view-link">VIEW ALL PRODUCTS →</a>
+    </div>
 
-        <p>
-          Discover our exclusive collection of premium
-          Three Piece & Women's Wear.
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+      <article class="product-card">
+        <div class="product-image">
+          <span class="badge">NEW</span>
+          <button class="wishlist" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.8 8.6c0 5.5-8.8 10.4-8.8 10.4S3.2 14.1 3.2 8.6A5 5 0 0 1 12 5a5 5 0 0 1 8.8 3.6Z"/>
+            </svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1610030469668-8e9f641aaf7e?auto=format&fit=crop&w=700&q=85" alt="Floral Lawn Three Piece">
+        </div>
+        <div class="product-info">
+          <div class="product-category">Premium Collection</div>
+          <h3 class="product-name">Floral Lawn Three Piece</h3>
+          <div class="rating">★★★★★ <span>(12 Reviews)</span></div>
+          <div class="product-bottom">
+            <div class="price">৳ 1,450</div>
+            <button class="add-btn" onclick="addToCart('Floral Lawn Three Piece')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 4h2l2.5 12h10L21 7H6M9 20h.01M17 20h.01"/>
+              </svg>
+              <span>ADD</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card">
+        <div class="product-image">
+          <span class="badge">NEW</span>
+          <button class="wishlist" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.8 8.6c0 5.5-8.8 10.4-8.8 10.4S3.2 14.1 3.2 8.6A5 5 0 0 1 12 5a5 5 0 0 1 8.8 3.6Z"/>
+            </svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=85" alt="Digital Printed Three Piece">
+        </div>
+        <div class="product-info">
+          <div class="product-category">Digital Print</div>
+          <h3 class="product-name">Digital Printed Three Piece</h3>
+          <div class="rating">★★★★★ <span>(18 Reviews)</span></div>
+          <div class="product-bottom">
+            <div class="price">৳ 1,350</div>
+            <button class="add-btn" onclick="addToCart('Digital Printed Three Piece')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 4h2l2.5 12h10L21 7H6M9 20h.01M17 20h.01"/>
+              </svg>
+              <span>ADD</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card">
+        <div class="product-image">
+          <span class="badge">NEW</span>
+          <button class="wishlist" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.8 8.6c0 5.5-8.8 10.4-8.8 10.4S3.2 14.1 3.2 8.6A5 5 0 0 1 12 5a5 5 0 0 1 8.8 3.6Z"/>
+            </svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=700&q=85" alt="Embroidered Lawn Three Piece">
+        </div>
+        <div class="product-info">
+          <div class="product-category">Embroidered</div>
+          <h3 class="product-name">Embroidered Lawn Three Piece</h3>
+          <div class="rating">★★★★★ <span>(9 Reviews)</span></div>
+          <div class="product-bottom">
+            <div class="price">৳ 1,650</div>
+            <button class="add-btn" onclick="addToCart('Embroidered Lawn Three Piece')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 4h2l2.5 12h10L21 7H6M9 20h.01M17 20h.01"/>
+              </svg>
+              <span>ADD</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="product-card">
+        <div class="product-image">
+          <span class="badge">NEW</span>
+          <button class="wishlist" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.8 8.6c0 5.5-8.8 10.4-8.8 10.4S3.2 14.1 3.2 8.6A5 5 0 0 1 12 5a5 5 0 0 1 8.8 3.6Z"/>
+            </svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=85" alt="Premium Cotton Three Piece">
+        </div>
+        <div class="product-info">
+          <div class="product-category">Cotton Collection</div>
+          <h3 class="product-name">Premium Cotton Three Piece</h3>
+          <div class="rating">★★★★★ <span>(21 Reviews)</span></div>
+          <div class="product-bottom">
+            <div class="price">৳ 1,250</div>
+            <button class="add-btn" onclick="addToCart('Premium Cotton Three Piece')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 4h2l2.5 12h10L21 7H6M9 20h.01M17 20h.01"/>
+              </svg>
+              <span>ADD</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="container feature-grid">
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M5 21v-2a7 7 0 0 1 14 0v2M8 21h8"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Premium Quality</h3>
+        <p>Best quality fabrics for you.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M3 6h11v12H3zM14 10h4l3 3v5h-7z"/>
+          <circle cx="7" cy="19" r="2"/>
+          <circle cx="18" cy="19" r="2"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Fast Delivery</h3>
+        <p>Delivered to your doorstep.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="4" y="10" width="16" height="11" rx="2"/>
+          <path d="M7 10V7a5 5 0 0 1 10 0v3M12 14v3"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Secure Payment</h3>
+        <p>Safe and secure checkout.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 13a8 8 0 0 1 16 0v5H4zM4 15H2v4h4M20 15h2v4h-4"/>
+          <path d="M9 21h6"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Customer Support</h3>
+        <p>We are here to help you.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Special Collection -->
+<section class="collection">
+  <div class="container collection-banner">
+    <div class="collection-content">
+      <div class="eyebrow">Special Offer</div>
+      <h2>NEW COLLECTION</h2>
+      <p>UP TO 30% OFF</p>
+      <a href="#products" class="btn btn-primary">SHOP NOW →</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container about-grid">
+
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=85" alt="Sofi Cloth Store fashion">
+    </div>
+
+    <div class="about-content">
+      <div class="section-head">
+        <div class="kicker">About Sofi</div>
+        <h2 class="section-title">Elegance In Every Thread</h2>
+      </div>
+
+      <p class="section-desc">
+        At Sofi Cloth Store, we believe every woman deserves
+        fashion that feels beautiful, comfortable and timeless.
+        Our collections bring together premium fabrics,
+        elegant designs and affordable luxury.
+      </p>
+
+      <div class="about-points">
+        <div class="about-point"><span>✦</span> Premium Fabrics</div>
+        <div class="about-point"><span>✦</span> Elegant Designs</div>
+        <div class="about-point"><span>✦</span> Affordable Prices</div>
+        <div class="about-point"><span>✦</span> Trusted Service</div>
+      </div>
+
+      <a href="#products" class="btn btn-primary">DISCOVER MORE →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <div class="container">
+    <div class="kicker">Stay Connected</div>
+    <h2>Join Our Fashion Family</h2>
+    <p>Subscribe for new arrivals, exclusive offers and style updates.</p>
+
+    <form class="subscribe" id="subscribeForm">
+      <input type="email" id="emailInput" placeholder="Enter your email address" required>
+      <button type="submit">SUBSCRIBE</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <a href="#" class="brand">
+          <span class="brand-symbol">S</span>
+          <span>
+            <div class="brand-name">SOFI</div>
+            <div class="brand-sub">CLOTH STORE</div>
+          </span>
+        </a>
+
+        <p class="footer-brand">
+          We bring you the latest fashion in Three Piece
+          and Women's Wear with premium quality and
+          affordable prices.
         </p>
 
-        <a href="#shop" class="btn btn-primary">SHOP NOW ♧</a>
-        <a href="#categories" class="btn btn-outline">VIEW COLLECTION</a>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="TikTok">♪</a>
+        </div>
       </div>
 
-      <div class="hero-image">
-        <img
-          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85"
-          alt="Elegant women's fashion collection">
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#categories">Shop</a></li>
+          <li><a href="#products">Three Piece</a></li>
+          <li><a href="#products">Women's Wear</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Customer Service</h3>
+        <ul class="footer-links">
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Return & Refund Policy</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Contact Us</h3>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.5 2.2a2 2 0 0 1-.6 1.8L8.7 10a16 16 0 0 0 5.3 5.3l1.3-1.3a2 2 0 0 1 1.8-.6l2.2.5a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            <span>+880 1723 456 789</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+            <span>info@soficlothstore.com</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>Moulvibazar, Sylhet, Bangladesh</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+            <span>10:00 AM – 10:00 PM</span>
+          </li>
+        </ul>
       </div>
 
     </div>
-  </section>
 
-  <!-- Categories -->
-  <section class="section" id="categories">
-    <div class="container">
-
-      <h2 class="section-title">Shop By Category</h2>
-
-      <div class="category-grid">
-
-        <a href="#shop" class="category-card">
-          <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85" alt="Three Piece">
-          <div class="category-label">
-            <strong>Three Piece</strong>
-            <span>Explore Now →</span>
-          </div>
-        </a>
-
-        <a href="#shop" class="category-card">
-          <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=500&q=85" alt="Unstitched">
-          <div class="category-label">
-            <strong>Unstitched</strong>
-            <span>Explore Now →</span>
-          </div>
-        </a>
-
-        <a href="#shop" class="category-card">
-          <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?auto=format&fit=crop&w=500&q=85" alt="Ready to Wear">
-          <div class="category-label">
-            <strong>Ready to Wear</strong>
-            <span>Explore Now →</span>
-          </div>
-        </a>
-
-        <a href="#shop" class="category-card">
-          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=500&q=85" alt="Shawls and Dupatta">
-          <div class="category-label">
-            <strong>Shawls & Dupatta</strong>
-            <span>Explore Now →</span>
-          </div>
-        </a>
-
-        <a href="#shop" class="category-card">
-          <img src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=500&q=85" alt="Hijab and Scarves">
-          <div class="category-label">
-            <strong>Hijab & Scarves</strong>
-            <span>Explore Now →</span>
-          </div>
-        </a>
-
-      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sofi Cloth Store. All Rights Reserved.</span>
+      <span>Designed with ♥ for our customers</span>
     </div>
-  </section>
 
-  <!-- New Arrivals -->
-  <section class="section" id="new-arrivals">
-    <div class="container">
+  </div>
+</footer>
 
-      <div class="section-heading">
-        <h2>New Arrivals</h2>
-        <div class="heading-line"></div>
-        <a href="#shop" class="view-all">View All Products →</a>
-      </div>
+<div class="toast" id="toast" aria-live="polite"></div>
 
-      <div class="products" id="shop">
+<script>
+let cartCount = 0;
+let toastTimer;
 
-        <article class="product-card">
-          <div class="product-image">
-            <span class="new-badge">New</span>
-            <img src="https://images.unsplash.com/photo-1610030469668-8e9f641aaf7e?auto=format&fit=crop&w=500&q=85" alt="Floral Lawn Three Piece">
-          </div>
-          <div class="product-info">
-            <div class="product-name">Floral Lawn Three Piece</div>
-            <div class="product-bottom">
-              <span class="price">৳ 1,450</span>
-              <button class="add-cart" data-name="Floral Lawn Three Piece" aria-label="Add to cart">♧</button>
-            </div>
-          </div>
-        </article>
+const cartElement = document.getElementById('cartCount');
+const toast = document.getElementById('toast');
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
 
-        <article class="product-card">
-          <div class="product-image">
-            <span class="new-badge">New</span>
-            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=85" alt="Digital Printed Three Piece">
-          </div>
-          <div class="product-info">
-            <div class="product-name">Digital Printed Three Piece</div>
-            <div class="product-bottom">
-              <span class="price">৳ 1,350</span>
-              <button class="add-cart" data-name="Digital Printed Three Piece" aria-label="Add to cart">♧</button>
-            </div>
-          </div>
-        </article>
+function showMessage(message){
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
 
-        <article class="product-card">
-          <div class="product-image">
-            <span class="new-badge">New</span>
-            <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85" alt="Embroidered Lawn Three Piece">
-          </div>
-          <div class="product-info">
-            <div class="product-name">Embroidered Lawn Three Piece</div>
-            <div class="product-bottom">
-              <span class="price">৳ 1,650</span>
-              <button class="add-cart" data-name="Embroidered Lawn Three Piece" aria-label="Add to cart">♧</button>
-            </div>
-          </div>
-        </article>
+function addToCart(productName){
+  cartCount++;
+  cartElement.textContent = cartCount;
+  showMessage(productName + ' added to cart');
+}
 
-        <article class="product-card">
-          <div class="product-image">
-            <span class="new-badge">New</span>
-            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=500&q=85" alt="Premium Cotton Three Piece">
-          </div>
-          <div class="product-info">
-            <div class="product-name">Premium Cotton Three Piece</div>
-            <div class="product-bottom">
-              <span class="price">৳ 1,250</span>
-              <button class="add-cart" data-name="Premium Cotton Three Piece" aria-label="Add to cart">♧</button>
-            </div>
-          </div>
-        </article>
+function toggleWishlist(button){
+  button.classList.toggle('active');
+  const active = button.classList.contains('active');
+  button.setAttribute('aria-label', active ? 'Remove from wishlist' : 'Add to wishlist');
+  showMessage(active ? 'Added to wishlist' : 'Removed from wishlist');
+}
 
-        <article class="product-card">
-          <div class="product-image">
-            <span class="new-badge">New</span>
-            <img src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=500&q=85" alt="Luxury Chiffon Three Piece">
-          </div>
-          <div class="product-info">
-            <div class="product-name">Luxury Chiffon Three Piece</div>
-            <div class="product-bottom">
-              <span class="price">৳ 1,850</span>
-              <button class="add-cart" data-name="Luxury Chiffon Three Piece" aria-label="Add to cart">♧</button>
-            </div>
-          </div>
-        </article>
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
 
-      </div>
-    </div>
-  </section>
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
 
-  <!-- Features -->
-  <section class="features">
-    <div class="container feature-grid">
+document.getElementById('subscribeForm').addEventListener('submit', function(event){
+  event.preventDefault();
+  const email = document.getElementById('emailInput').value.trim();
 
-      <div class="feature">
-        <div class="feature-icon">♕</div>
-        <div>
-          <strong>Premium Quality</strong>
-          <p>We ensure the best quality fabrics for you.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">♧</div>
-        <div>
-          <strong>Fast Delivery</strong>
-          <p>Get your order delivered at your doorstep.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">♙</div>
-        <div>
-          <strong>Secure Payment</strong>
-          <p>100% secure payment gateway.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">♧</div>
-        <div>
-          <strong>Customer Support</strong>
-          <p>We are here to help you anytime.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Offer Banner -->
-  <section class="offer">
-    <div class="container offer-inner">
-
-      <div class="offer-content">
-        <div class="script">Special Offer</div>
-        <h2>NEW COLLECTION</h2>
-        <p>UP TO 30% OFF</p>
-        <a href="#shop" class="btn btn-primary">SHOP NOW</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="about">
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <a href="#" class="logo">
-            <span class="logo-mark">S</span>
-            <span class="logo-text">
-              <strong>SOFI</strong>
-              <small>CLOTH STORE</small>
-            </span>
-          </a>
-
-          <p>
-            We bring you the latest fashion in Three Piece
-            and Women's Wear with premium quality and
-            affordable prices.
-          </p>
-
-          <div class="socials">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">◎</a>
-            <a href="#" aria-label="YouTube">▶</a>
-            <a href="#" aria-label="TikTok">♪</a>
-          </div>
-        </div>
-
-        <div>
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="#categories">Three Piece</a></li>
-            <li><a href="#shop">Women's Wear</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Customer Service</h3>
-          <ul>
-            <li><a href="#">Track Order</a></li>
-            <li><a href="#">Return & Refund Policy</a></li>
-            <li><a href="#">Shipping Policy</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div id="contact">
-          <h3>Contact Us</h3>
-          <ul>
-            <li class="contact-item">
-              <span>♧</span>
-              <span>+880 1723 456 789</span>
-            </li>
-            <li class="contact-item">
-              <span>✉</span>
-              <span>info@soficlothstore.com</span>
-            </li>
-            <li class="contact-item">
-              <span>⌖</span>
-              <span>Moulvibazar, Sylhet, Bangladesh</span>
-            </li>
-            <li class="contact-item">
-              <span>◷</span>
-              <span>10:00 AM – 10:00 PM</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2024 Sofi Cloth Store. All Rights Reserved.</span>
-        <span>Designed with ♥ for our customers</span>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-    const cartCount = document.getElementById('cartCount');
-
-    let cart = 0;
-
-    menuToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('show');
-    });
-
-    document.querySelectorAll('.add-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        cart++;
-        cartCount.textContent = cart;
-
-        const original = button.textContent;
-        button.textContent = '✓';
-
-        setTimeout(() => {
-          button.textContent = original;
-        }, 900);
-      });
-    });
-
-    document.querySelectorAll('#mainNav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('show');
-      });
-    });
-  </script>
+  if(email){
+    showMessage('Thank you for subscribing!');
+    this.reset();
+  }
+});
+</script>
 
 </body>
 </html>
