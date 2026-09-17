@@ -1,2 +1,3 @@
 
-URL: https://github.com/yourdocuments/soficlothstore.github.io
+URL:
+https://admission.snkitinstitute.com/soficlothstore.github.io/#contact
