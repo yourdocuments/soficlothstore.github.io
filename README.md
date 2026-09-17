@@ -1,2 +1,2 @@
-# soficlothstore.github.io
-URL: 
+
+URL: https://github.com/yourdocuments/soficlothstore.github.io
